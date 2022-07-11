@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title property="foaf:name schema:name">Sparnatural : a visual knowledge graph exploration tool</title>
+  <link rel="stylesheet" media="screen" href="styles/screen.css" />
+  <link rel="stylesheet" media="print"  href="styles/print.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <meta name="citation_title" content="Sparnatural : a visual knowledge graph exploration tool">
+  <meta name="citation_author" content="Thomas Francart" />
+  
+  <meta name="citation_publication_date" content="2022/07/11" />
+</head>
+
+<body prefix="dctypes: http://purl.org/dc/dcmitype/ pimspace: http://www.w3.org/ns/pim/space# rsa: http://www.w3.org/ns/auth/rsa# cert: http://www.w3.org/ns/auth/cert# wgs: http://www.w3.org/2003/01/geo/wgs84_pos# biblio: http://purl.org/net/biblio# bibo: http://purl.org/ontology/bibo/ book: http://purl.org/NET/book/vocab# ov: http://open.vocab.org/terms/ doap: http://usefulinc.com/ns/doap# dbr: http://dbpedia.org/resource/ dbp: http://dbpedia.org/property/ sio: http://semanticscience.org/resource/ opmw: http://www.opmw.org/ontology/ deo: http://purl.org/spar/deo/ doco: http://purl.org/spar/doco/ cito: http://purl.org/spar/cito/ fabio: http://purl.org/spar/fabio/ solid: http://www.w3.org/ns/solid/terms# acl: http://www.w3.org/ns/auth/acl# dio: https://w3id.org/dio# lsc: http://linkedscience.org/lsc/ns#" typeof="schema:CreativeWork sioc:Post prov:Entity lsc:Research">
+  <header>
+  <h1 id="sparnatural--a-visual-knowledge-graph-exploration-tool">Sparnatural : a visual knowledge graph exploration tool</h1>
+
+  <ul id="authors">
+    <li><a rev="lsc:participatesIn" property="foaf:maker schema:creator schema:author schema:publisher" href="http://sparna.fr" typeof="foaf:Person schema:Person" resource="http://sparnatural.eu">Thomas Francart</a></li>
+  </ul>
+
+  <ul id="affiliations">
+    <li id="myaffiliation">Sparna</li>
+  </ul>
+
+  <section id="abstract" inlist="" rel="schema:hasPart" resource="#abstract">
+<div datatype="rdf:HTML" property="schema:description">
+      <h2 property="schema:name">Abstract</h2>
+      <!-- Context      -->
+      <p>Knowledge Graphs are often relying on conceptual models with a high level of abstraction, making them hard to understand for non-expert users, and are often hidden behind search forms, loosing the flexibility to interact with the graph <em>as a graph</em>.
+<!-- Need         -->
+Hence there is a need to shorten the distance between knowledge graphs and end users, in order to leverage the flexibility offered by the graph structure.
+<!-- Task         -->
+Sparnatural was designed and developped as a visual, configurable, easily deployable, open-source, cient-side SPARQL query builder, allowing users to query any RDF knowledge graph.
+<!-- Object       -->
+We describe here how Sparnatural works, how it can be configured, and we show how it was deployed in two demonstrators for the <em>Archives Nationales de France</em> (ANF) and <em>Bibliothèque Nationale de France</em> (BNF).
+<!-- Findings     -->
+We show how Sparnatural has make it possible to give access to non-expert users, with a limited effort, to these two large graphs.</p>
+
+      <!-- Conclusion   -->
+      <p>The workshops conducted with end-users during the building of the two demonstrators showed that users were enthusiastics about the possibility it offered, but also revealed that this novel search paradigm is surprising and could benefit from user onboarding.
+<!-- Perspectives -->
+How Sparnatural is configured is key in providing an efficient access to the graph; we plan to work on semi-automated configuration generation from the graph structure, as well as adding new value selection widgets such as geographical area selection to generate GeoSPARQL queries.</p>
+
+    </div>
+</section>
+
+  <p><em>This is a submission for a demonstration.</em></p>
+</header>
+
+<main>
+  <!-- Add sections by specifying their file name, excluding the '.md' suffix. -->
+  <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
+<div datatype="rdf:HTML" property="schema:description">
+      <h2 property="schema:name">Introduction</h2>
+
+      <p>The requirement for data interoperability has driven the development of many conceptual models used for structuring knowledge graphs. In the field of digital humanities we can think of <a property="schema:citation http://purl.org/spar/cito/cites" href="https://cidoc-crm.org">CIDOC-CRM</a> <span class="references">[<a href="#ref-1">1</a>]</span> for culturage heritage, <a property="schema:citation http://purl.org/spar/cito/cites" href="https://repository.ifla.org/handle/123456789/40">LRM</a> <span class="references">[<a href="#ref-2">2</a>]</span> for libraries, or <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.ica.org/en/records-in-contexts-conceptual-model">RIC-CM</a> <span class="references">[<a href="#ref-3">3</a>]</span> and <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.ica.org/en/records-in-contexts-ontology">RIC-O</a> <span class="references">[<a href="#ref-4">4</a>]</span> for archives. The knowledge graphs based on these ontologies are accessible either using programmatic interfaces (SPARQL endpoint), or sometimes they underly other search systems, typically “multicriteria query forms” or faceted search engines.</p>
+
+      <p>Data interoperability and data aggregation from silos in a homogeneous graph require a lot of efforts, at the intellectual, business process and technical levels. These efforts are hard to explain and demonstrate, because no good solution exists to actually make the graph <em>tangible</em> for managers and <em>accessible</em> for end-users : SPARQL endpoints are too technical, and search systems look like “simple” search systems and do not show the graph.</p>
+
+    </div>
+</section>
+
+  <section id="sparnatural" inlist="" rel="schema:hasPart" resource="#sparnatural">
+<div datatype="rdf:HTML" property="schema:description">
+      <h2 property="schema:name">Sparnatural : an intuitive visual SPARQL query builder</h2>
+
+      <p><a property="schema:citation http://purl.org/spar/cito/cites" href="http://sparnatural.eu">Sparnatural</a> <span class="references">[<a href="#ref-5">5</a>]</span> provides an innovative search paradigm to explore and discover these knowledge graphs. A <a property="schema:citation http://purl.org/spar/cito/cites" href="https://youtu.be/jcfldxjsBkk ">presentation video</a> <span class="references">[<a href="#ref-6">6</a>]</span> demonstrates its features. Technically speaking, Sparnatural is a visual SPARQL query builder, written in Javascript, operating purely on the client. Its only requirement is a <a property="schema:citation http://purl.org/spar/cito/cites" href="https://developer.mozilla.org/fr/docs/Web/HTTP/CORS">CORS-enabled</a> <span class="references">[<a href="#ref-7">7</a>]</span> SPARQL endpoint to which the queries can be sent. Sparnatural is open-source, under a LGPL license.</p>
+
+      <p>Sparnatural visually displays the query pattern with connectors and indentation, as in he following screenshot taken from the ANF demonstrator:</p>
+
+      <figure id="sparnatural-query">
+<img src="img/example-query.png" alt="A Sparnatural example query" />
+<figcaption>
+          <p><span class="label">Fig. 1:</span> A query edited in Sparnatural : <em>“Archive records that have as provenance a Person who is a member of an organization of type ‘Notarial Office’, and that are of type ‘bill of sale’ or ‘civil status document’“</em></p>
+        </figcaption>
+</figure>
+
+      <p>Each line in the query mimics the structure of an RDF triple with a subject type, a predicate, an object type and optionnaly some values. At each step, dropdown lists enable the user to directly see the available types of entities and links in the graph.</p>
+
+      <p>Values of a criteria can be selected with either dropdown lists, autocompleted search fields, date ranges (at either year or date precision) with calendar selection, tree selector to browse a hierarchy, boolean criteria, or plain text search criteria.</p>
+
+      <p>The set of columns in the result set can be controlled by activating the “eye” icon on the arrows in the query pattern that should be included as columns in the result set. The bottom part of the query editor can be opened to further control the order of columns, their names and sort options.</p>
+
+      <p>The interface allows rapid “trial and error” interactions, allowing the users to build their own mental representation of the structure of the graph.</p>
+
+      <p>Sparnatural also offers the ability to load predefined queries, enabling data publishers to propose sample queries that can be loaded in one click. This can serve as query templates that the users can modify.</p>
+
+      <p>While <code>OPTIONAL</code> and <code>FILTER NOT EXISTS</code> are supported, Sparnatural does not have the objective of covering 100% of SPARQL keywords; currently it does not support <code>UNION</code>, <code>SERVICE</code>, <code>FROM</code>, or Aggregate functions such as <code>COUNT</code>.</p>
+
+      <p>Sparnatural can be combined with the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://triply.cc/docs/yasgui">YASGUI</a> <span class="references">[<a href="#ref-8">8</a>]</span> SPARQL results display component to print the results of the generated SPARQL query.</p>
+
+    </div>
+</section>
+
+  <section id="demonstrators" inlist="" rel="schema:hasPart" resource="#demonstrators">
+<div datatype="rdf:HTML" property="schema:description">
+      <h2 property="schema:name">ANF and BNF demonstrators</h2>
+
+      <p>The <a href="https://www.archives-nationales.culture.gouv.fr/">French National Archives (ANF)</a> and the <a href="https://www.bnf.fr">French National Library (BNF)</a> conducted a project to add features to Sparnatural and to build two demonstrators to test its deployment on their respective knowledge graphs. The project was successfully concluded in June 2022 by a <a property="schema:citation http://purl.org/spar/cito/cites" href="http://sparnatural.eu#restitution-an-bnf">presentation at the ANF</a> <span class="references">[<a href="#ref-9">9</a>]</span>.</p>
+
+      <p>The <a property="schema:citation http://purl.org/spar/cito/cites" href="https://sparna-git.github.io/sparnatural-demonstrateur-an/">demonstrator of the ANF</a> <span class="references">[<a href="#ref-10">10</a>]</span> allows to explore a dataset based on <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.ica.org/en/records-in-contexts-ontology">RIC-O</a> <span class="references">[<a href="#ref-4">4</a>]</span>, of about 50 million triples describing notarial archives. The demonstrator proposes two configurations of Sparnatural to navigate the same data : a generic one, that could be used for any RIC-O-based knowledge graph, and a more precise, showing specific criterias for notarial archives.</p>
+
+      <p>The <a property="schema:citation http://purl.org/spar/cito/cites" href="https://data.bnf.fr/sparnatural">demonstrator of the BNF</a> <span class="references">[<a href="#ref-11">11</a>]</span> allows to query the data already accessible in the <a property="schema:citation http://purl.org/spar/cito/sites" href="https://data.bnf.fr">data.bnf.fr</a> <span class="references">[<a href="#ref-12">12</a>]</span> portal, of about 600 million triples, and based on an <a property="schema:citation http://purl.org/spar/cito/cites" href="https://repository.ifla.org/handle/123456789/40">LRM-like</a> <span class="references">[<a href="#ref-2">2</a>]</span> ontology. The performance of the SPARQL endpoint was sufficient to allow to deploy Sparnatural without further performance tuning.</p>
+
+      <p>The project included three workshops to confront Sparnatural with end-users and gather feedback. Users were mostly enthusiastics, but some were lost by this new search paradigm. Some feedback was taken into account, such as the inclusion of the query execution button, the “reset” button.</p>
+    </div>
+</section>
+
+  <section id="configuration" inlist="" rel="schema:hasPart" resource="#configuration">
+<div datatype="rdf:HTML" property="schema:description">
+      <h2 property="schema:name">Ontology-driven configuration of Sparnatural</h2>
+
+      <p>Sparnatural is configured by an OWL ontology, defining which classes and relationships are shown in the interface. The ontology defines the (multilingual) labels and tooltips, icons, or which value selection widget should be used for each predicate. The dropdown list and autocomplete widgets are also associated to a SPARQL query that populates the list or the autocomplete suggestions.</p>
+
+      <p>A key aspect of that configuration ontology is that it does not need to be exactly the same as the ontology of the underlying knowledge graph. Classes or properties can be removed to show only part of the graph; they can be labeled differently, and documented with user-oriented tooltips; shortcuts can be proposed : a single predicate in the search interface can correspond to a property path in the underlying graph structure, traversing multiple nodes ; classes presented to users can be subsets of the (in general relatively abstract) classes of the underlying graph ontology.</p>
+
+      <p>The mapping to the underlying graph ontology is done through the use of an annotation (<code>sparnatural-config:sparqlString</code>) enabling to replace the corresponding class or property identifier in the SPARQL query by another string. The final SPARQL query generation is done in two steps : first, a SPARQL query based on the search interface ontology is built, and then identifiers in it are replaced by their mapping to the graph structure.</p>
+
+      <p>The decoupling of the search ontology from the graph structure enables to show the same graph in different ways to different categories of users. The configuration ontologies can also be shared, such as the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://github.com/sparna-git/sparnatural-demonstrateur-an/blob/main/sparnatural-config-A.ttl">generic configuration for the ANF demonstrator</a> <span class="references">[<a href="#ref-13">13</a>]</span>, or the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://github.com/sparna-git/sparnatural.eu/blob/main/demos/demo-bnf/sparnatural-config.ttl">BNF demonstrator</a> <span class="references">[<a href="#ref-14">14</a>]</span>.</p>
+
+    </div>
+</section>
+
+  <section id="conclusion" inlist="" rel="schema:hasPart" resource="#conclusion">
+<div datatype="rdf:HTML" property="schema:description">
+      <h2 property="schema:name">Conclusion</h2>
+
+      <p>Sparnatural offers an easy way to leverage knowledge graphs. Users with no technical knowledge of SPARQL and no <em>a priori</em> knowledge of the graph structure can query the data. Its client-side only deployment allows to easily include it in a webpage, replacing or complementing existing SPARQL endpoint forms.</p>
+
+      <p>Future work on Sparnatural includes, on the technical side, a rewrite of the component in Typescript for easier inclusion in React applications, and the addition of a geographical search widget; and on the configuration side the ability to automatically derive a configuration ontology from the underlying graph structure, that can be manually tuned to be presented to end-users.</p>
+
+    </div>
+</section>
+
+</main>
+
+<footer><section>
+<h2 id="references">References</h2>
+<dl class="references">
+  <dt id="ref-1">[1]</dt>
+  <dd resource="https://cidoc-crm.org" typeof="schema:CreativeWork">Le Bœuf, P., Doerr, M., Emil Ore, C., Stead, S.: CIDOC Conceptual Reference Model. <a href="https://cidoc-crm.org">https:/​/​cidoc-crm.org</a></dd>
+  <dt id="ref-2">[2]</dt>
+  <dd resource="https://repository.ifla.org/handle/123456789/40" typeof="schema:CreativeWork">Riva, P., Le Boeuf, P., Žumer, M.: IFLA Library Reference Model: A Conceptual Model for Bibliographic Information. <a href="https://repository.ifla.org/handle/123456789/40">https:/​/​repository.ifla.org/handle/123456789/40</a> (2018).</dd>
+  <dt id="ref-3">[3]</dt>
+  <dd resource="https://www.ica.org/en/records-in-contexts-conceptual-model" typeof="schema:CreativeWork">Records In Contexts Conceptual Model. <a href="https://www.ica.org/en/records-in-contexts-conceptual-model">https:/​/​www.ica.org/en/records-in-contexts-conceptual-model</a></dd>
+  <dt id="ref-4">[4]</dt>
+  <dd resource="https://www.ica.org/en/records-in-contexts-ontology" typeof="schema:CreativeWork">Records In Contexts Ontology. <a href="https://www.ica.org/en/records-in-contexts-ontology">https:/​/​www.ica.org/en/records-in-contexts-ontology</a></dd>
+  <dt id="ref-5">[5]</dt>
+  <dd resource="http://sparnatural.eu" typeof="schema:CreativeWork">Sparnatural. <a href="http://sparnatural.eu">http:/​/​sparnatural.eu</a></dd>
+  <dt id="ref-6">[6]</dt>
+  <dd resource="https://youtu.be/jcfldxjsBkk " typeof="schema:CreativeWork">Sparnatural presentation video. <a href="https://youtu.be/jcfldxjsBkk">https:/​/​youtu.be/jcfldxjsBkk</a> </dd>
+  <dt id="ref-7">[7]</dt>
+  <dd resource="https://developer.mozilla.org/fr/docs/Web/HTTP/CORS" typeof="schema:CreativeWork">Cross Origin Resource Sharing. <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/CORS">https:/​/​developer.mozilla.org/fr/docs/Web/HTTP/CORS</a></dd>
+  <dt id="ref-8">[8]</dt>
+  <dd resource="https://triply.cc/docs/yasgui" typeof="schema:CreativeWork">YASGUI. <a href="https://triply.cc/docs/yasgui">https:/​/​triply.cc/docs/yasgui</a></dd>
+  <dt id="ref-9">[9]</dt>
+  <dd resource="http://sparnatural.eu#restitution-an-bnf" typeof="schema:CreativeWork">Sparnatural project presentation (French). <a href="http://sparnatural.eu#restitution-an-bnf">http:/​/​sparnatural.eu#restitution-an-bnf</a></dd>
+  <dt id="ref-10">[10]</dt>
+  <dd resource="https://sparna-git.github.io/sparnatural-demonstrateur-an/" typeof="schema:CreativeWork">Sparnatural ANF demonstrator. <a href="https://sparna-git.github.io/sparnatural-demonstrateur-an/">https:/​/​sparna-git.github.io/sparnatural-demonstrateur-an/</a></dd>
+  <dt id="ref-11">[11]</dt>
+  <dd resource="https://data.bnf.fr/sparnatural" typeof="schema:CreativeWork">Sparnatural BNF demonstrator. <a href="https://data.bnf.fr/sparnatural">https:/​/​data.bnf.fr/sparnatural</a></dd>
+  <dt id="ref-12">[12]</dt>
+  <dd resource="https://data.bnf.fr" typeof="schema:CreativeWork">Data portal of the French National Library. <a href="https://data.bnf.fr">https:/​/​data.bnf.fr</a></dd>
+  <dt id="ref-13">[13]</dt>
+  <dd resource="https://github.com/sparna-git/sparnatural-demonstrateur-an/blob/main/sparnatural-config-A.ttl" typeof="schema:CreativeWork">Sparnatural configuration for ANBF demonstrator A. <a href="https://github.com/sparna-git/sparnatural-demonstrateur-an/blob/main/sparnatural-config-A.ttl">https:/​/​github.com/sparna-git/sparnatural-demonstrateur-an/blob/main/sparnatural-config-A.ttl</a></dd>
+  <dt id="ref-14">[14]</dt>
+  <dd resource="https://github.com/sparna-git/sparnatural.eu/blob/main/demos/demo-bnf/sparnatural-config.ttl" typeof="schema:CreativeWork">Sparnatural configuration for demonstrator of the French National Library. <a href="https://github.com/sparna-git/sparnatural.eu/blob/main/demos/demo-bnf/sparnatural-config.ttl">https:/​/​github.com/sparna-git/sparnatural.eu/blob/main/demos/demo-bnf/sparnatural-config.ttl</a></dd>
+</dl>
+</section>
+</footer>
+
+
+
+</body>
+</html>

@@ -1,5 +1,8 @@
 # Sparnatural ISWC 2022 demonstration
 
+
+Companion demonstration video : https://www.youtube.com/watch?v=jcfldxjsBkk
+
 ## Development mode
 ```
 bundle install
