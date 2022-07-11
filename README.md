@@ -1,6 +1,6 @@
 # Sparnatural ISWC 2022 demonstration
 
-
+Published at https://tfrancart.github.io/sparnatural-iswc-2022/
 Companion demonstration video : https://www.youtube.com/watch?v=jcfldxjsBkk
 
 ## Development mode
