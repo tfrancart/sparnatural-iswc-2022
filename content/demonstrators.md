@@ -7,4 +7,4 @@ The [demonstrator of the ANF](cite:cites sparnatural-anf-demo) allows exploring 
 
 The [demonstrator of the BNF](cite:cites sparnatural-bnf-demo) allows querying the data already accessible in the [data.bnf.fr](cite:sites databnf) portal, of about 600 million triples, and based on an [LRM-like](cite:cites lrm) ontology. The performance of the SPARQL endpoint was sufficient to allow to deploy Sparnatural without further performance tuning.
 
-The project included three workshops to confront end-users with the tool and gather feedback. Users were mostly enthusiastics, but some were lost by this new search paradigm. Some feedback was taken into account, such as the inclusion of the query execution button, or the "reset" button.
+The project included three workshops to confront end-users with the tool and gather feedback. Users were mostly enthusiastic, but some were lost by this new search paradigm. Some feedback was taken into account, such as the inclusion of the query execution button, or the "reset" button.
