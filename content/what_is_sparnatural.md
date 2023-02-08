@@ -1,7 +1,7 @@
 ## Sparnatural: an intuitive visual SPARQL query builder
 {:#sparnatural}
 
-[Sparnatural](cite:cites sparnatural) provides an innovative search paradigm to explore and discover these knowledge graphs. A [presentation video](cite:cites sparnatural-video) demonstrates its features. Technically speaking, Sparnatural is a visual SPARQL query builder, written in Javascript, operating purely on the client. Its only requirement is a CORS-enabled SPARQL endpoint to which the queries can be sent. Sparnatural is open-source, under a LGPL license.
+[Sparnatural](cite:cites sparnatural) provides an innovative search paradigm to explore and discover these knowledge graphs. A [presentation video](cite:cites sparnatural-video) demonstrates its features. Technically speaking, Sparnatural is a visual SPARQL query builder, written in Typescript, operating purely on the client. Its only requirement is a SPARQL endpoint to which the queries can be sent. Sparnatural is open-source, under a LGPL license.
 
 Sparnatural visually displays the query pattern with connectors and indentation, as in Figure 1 below:
 
@@ -22,7 +22,7 @@ The interface allows rapid "trial and error" interactions, allowing the users to
 
 Sparnatural also offers the ability to load predefined queries, enabling data publishers to propose sample queries that can be loaded in one click. This can serve as query templates that the users can modify.
 
-While `OPTIONAL` and `FILTER NOT EXISTS` are supported, Sparnatural does not have the objective of covering 100% of SPARQL keywords; currently it does not support `UNION`, `SERVICE`, `FROM`, or Aggregate functions such as `COUNT`.
+While `OPTIONAL` and `FILTER NOT EXISTS` are supported, Sparnatural does not have the objective of covering 100% of SPARQL keywords; currently it does not support `UNION`, `FROM`, or Aggregate functions like `COUNT`.
 
 Sparnatural can be combined with the [YASGUI](cite:cites yasgui) SPARQL results display component to print the results of the generated SPARQL query.
 
